@@ -17,7 +17,6 @@ get '/profile' do
 end
 
 post '/profile' do
-
 end
 
 get '/profile/:id' do
