@@ -3,25 +3,11 @@ get '/' do
   erb :index
 end
 
-get '/bands' do
-  @band_names = Band.all.map(&:name)
-  erb :bands
+get '/profile' do
 end
 
-post '/bands' do
-  new_band = Band.create!(name: params[:name])
-  redirect "/bands/#{new_band.id}"
+get '/profile/:id' do
 end
 
-get '/bands/new' do
-  erb :new_band
-end
-
-get '/bands/:id' do
-  @band = Band.find(params[:id])
-  erb :show_band
-end
-
-get '/info' do
-  Demo.new(self).info
+post '/login' do
 end
