@@ -1,24 +1,15 @@
 <div class="container">
 <h1>Profile of: <%= @username %></h1>
 
-  <h2>Post a twyt</h2>
-  <form action="/profile" method="post">
-    <p>Twyt: <input type='text' name='twyt'></p>
-  </form>
-
   <h2>Twyts:</h2>
   <% @twytlist.each do |twyt| %>
-    <%= twyt.user.username %>
-    <%= twyt.message %>
+    <%= twyt.user.username%><br>
+    <%=twyt.message%>
+
   <% end %>
 
-  <h2>Followers:</h2>
-  <% @followers.each do |follower| %>
-    <%= follower.username %>
-  <% end %>
 
- <h2>Following:</h2>
-  <% @followed_users.each do |followed_user| %>
-    <%= followed_user.username %>
-  <% end %>
 </div>
+
+
+
