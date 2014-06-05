@@ -24,16 +24,13 @@ get '/' do
 end
 
 get '/profile', :auth => :user do
-  @followed_by = @user.is_followed_by
-  @follows_users = @user.follows_users
-  erb :my_profile
+  @show_twyt_bar = true
+  erb :profile
 end
 
 get '/profile/:username' do
   # TODO: Don't jack @user for this, would break any layout.erb things that use @user
   @user = User.find_by_username(params[:username])
-  @followed_by = @user.is_followed_by
-  @follows_users = @user.follows_users
   erb :profile
 end
 
