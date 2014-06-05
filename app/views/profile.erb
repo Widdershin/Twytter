@@ -1,11 +1,10 @@
 <div class="container">
-<h1>Profile of: <%= @username %></h1>
+
+  <h1>Profile of: <%= @user %></h1>
 
   <h2>Twyts:</h2>
-  <% @twytlist.each do |twyt| %>
-    Username: <%= @username %><br>
-    Message: <%=twyt.message%><br><br>
-  <% end %>
+    <% erb '_twyts'.to_sym %>
+  </br>
 
   <h2>Followers:</h2>
   <% if @followed_by != nil %>
@@ -22,6 +21,3 @@
  <% end %>
 
 </div>
-
-
-

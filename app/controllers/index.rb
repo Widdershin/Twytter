@@ -10,7 +10,6 @@ end
 
 helpers do
   def is_user?
-
     @user != nil
   end
 end
@@ -20,20 +19,27 @@ before do
 end
 
 get '/' do
-  # Look in app/views/index.erb
+# Look in app/views/index.erb
   erb :index
 end
 
 get '/profile', :auth => :user do
-  @username = @user.username
-  @twytlist = @user.twyts
   @followed_by = @user.is_followed_by
   @follows_users = @user.follows_users
-  "here"
+  erb :my_profile
+end
+
+get '/profile/:username' do
+  # TODO: Don't jack @user for this, would break any layout.erb things that use @user
+  @user = User.find_by_username(params[:username])
+  @followed_by = @user.is_followed_by
+  @follows_users = @user.follows_users
   erb :profile
 end
 
-get '/profile/:id' do
+get '/logout' do
+  session[:user_id] = nil
+  redirect to '/'
 end
 
 post '/login' do
@@ -44,3 +50,17 @@ post '/login' do
 
   redirect to '/profile'
 end
+
+post '/twyt' do
+  message = params[:twyt]
+  if message.size < 140
+    @user.post_twyt(message)
+  else
+    flash[:error] = "Error: Twyts must be 140 characters or less."
+  end
+
+  redirect to '/profile'
+end
+
+
+
