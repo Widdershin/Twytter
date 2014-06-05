@@ -32,7 +32,10 @@ get '/profile', :auth => :user do
   erb :profile
 end
 
-get '/profile/:id' do
+get '/profile/:username' do
+  @user = User.find_by_username(params[:username])
+  @username = @user.username; @twytlist = @user.twyts
+  erb :profile
 end
 
 post '/login' do
