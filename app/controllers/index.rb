@@ -29,14 +29,14 @@ end
 
 get '/profile', :auth => :user do
   @show_twyt_bar = true
-  @twyt_list = @user.twyts
+  @twyt_list = @user.twyts.reverse
   erb :profile
 end
 
 get '/profile/:username' do
   # TODO: Don't jack @user for this, would break any layout.erb things that use @user
   @user = User.find_by_username(params[:username])
-  @twyt_list = @user.twyts
+  @twyt_list = @user.twyts.reverse
   erb :profile
 end
 
