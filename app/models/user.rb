@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates :username, uniqueness: true
 
   def set_password(password)
     self.password_hash = self.class.hash_password(password)
