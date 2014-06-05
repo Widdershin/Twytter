@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "Profile controller" do
   before do
+    User.delete_all
     @user = User.make(username: 'test_user', email: 'foo@bar.com', password: 'test')
     visit '/'
 
@@ -28,5 +29,13 @@ describe "Profile controller" do
     click_button 'Post!'
 
     expect(page).to have_content 'Error: Twyts must be 140 characters or less.'
+  end
+
+  it 'lets you logout' do
+    visit '/profile'
+
+    click_link 'Logout'
+
+    expect(current_path).to eq '/'
   end
 end

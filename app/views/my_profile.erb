@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Profile of: <%= @user %></h1>
+
+  <form action="/twyt" method="post">
+    <input type="text" name="twyt" id="twyt_box">
+    <input type="submit" value="Post!">
+  </form>
+
+
+  <%= styled_flash %>
+  <%= erb '_twyts'.to_sym %>
+
+  <a href='/logout'>Logout</a>
+</div>

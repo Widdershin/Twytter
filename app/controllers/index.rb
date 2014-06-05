@@ -24,14 +24,20 @@ get '/' do
 end
 
 get '/profile', :auth => :user do
-  @username = @user.username
-  @twytlist = @user.twyts
   # @followers = @user.followers
   # @followed_users = @user.followed_users
+  erb :my_profile
+end
+
+get '/profile/:username' do
+  # TODO: Don't jack @user for this, would break any layout.erb things that use @user
+  @user = User.find_by_username(params[:username])
   erb :profile
 end
 
-get '/profile/:id' do
+get '/logout' do
+  session[:user_id] = nil
+  redirect to '/'
 end
 
 post '/login' do

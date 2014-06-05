@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
     user = User.new(username: username, email: email)
     user.set_password(password)
 
+    user.save!
     user
   end
 
@@ -36,6 +37,10 @@ class User < ActiveRecord::Base
 
   def post_twyt(message)
     twyts.create(message: message)
+  end
+
+  def to_s
+    username
   end
 
   private
