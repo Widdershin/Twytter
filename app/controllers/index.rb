@@ -24,9 +24,8 @@ get '/' do
 end
 
 get '/profile', :auth => :user do
-  # @followers = @user.followers
-  # @followed_users = @user.followed_users
-  erb :my_profile
+  @show_twyt_bar = true
+  erb :profile
 end
 
 get '/profile/:username' do
