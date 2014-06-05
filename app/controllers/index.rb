@@ -51,7 +51,7 @@ post '/login' do
 
   session[:user_id] = User.authenticate(username, password)
 
-  redirect to '/profile'
+  redirect to '/'
 end
 
 post '/twyt' do
