@@ -24,14 +24,17 @@ before do
           end
 end
 
-
 get '/' do
   # Look in app/views/index.erb
   erb :index
 end
 
 get '/profile', :auth => :user do
-  @user.username
+  @username = @user.username
+  @twytlist = @user.twyts
+  # @followers = @user.followers
+  # @followed_users = @user.followed_users
+  erb :profile
 end
 
 get '/profile/:id' do

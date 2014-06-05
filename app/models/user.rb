@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :twyts
+
+  # has_many :follows
+  # has_many :followed_users, :through => :follows, source => User
+  # has_many :followers, :through => :follows, source => User
 
   def set_password(password)
     self.password_hash = self.class.hash_password(password)
