@@ -8,7 +8,7 @@
 
   <h2>Twyts:</h2>
   <% @twytlist.each do |twyt| %>
-    <%= twyt.owner %>
+    <%= twyt.user.username %>
     <%= twyt.message %>
   <% end %>
 

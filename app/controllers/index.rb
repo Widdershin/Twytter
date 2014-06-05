@@ -3,17 +3,12 @@ get '/' do
   erb :index
 end
 
-get '/profile' do
-  if session['user_id'] != nil
-    user = User.find_by_id(session['user_id'])
-    @username = user.username
-    @twytlist = Tweet.where(id: session['user_id'])
-    @followers = User.followers
-    @followed_users = User.followed_users
-    erb :profile
-  else
-    redirect('/')
-  end
+get '/profile', :auth => :user do
+  @username = @user.username
+  @twytlist = @user.twyts
+  @followers = @user.followers
+  @followed_users = @user.followed_users
+  erb :profile
 end
 
 post '/profile' do
