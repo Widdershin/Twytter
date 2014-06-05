@@ -5,12 +5,9 @@ class User < ActiveRecord::Base
 
   has_many :follows_target, class_name: 'Follow', foreign_key: 'origin_id'
   has_many :follows_users, through: :follows_target, :source => 'target'
-  belongs_to :target, class_name: 'Follow'
 
   has_many :is_followed_by_origin, class_name: 'Follow', foreign_key: 'target_id'
   has_many :is_followed_by, through: :is_followed_by_origin, :source => 'origin'
-  belongs_to :origin, class_name: 'Follow'
-
 
   def self.authenticate(username, password)
     user = User.find_by_username(username)
