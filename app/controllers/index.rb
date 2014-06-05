@@ -27,8 +27,9 @@ end
 get '/profile', :auth => :user do
   @username = @user.username
   @twytlist = @user.twyts
-  # @followers = @user.followers
-  # @followed_users = @user.followed_users
+  @followed_by = @user.is_followed_by
+  @follows_users = @user.follows_users
+  "here"
   erb :profile
 end
 
