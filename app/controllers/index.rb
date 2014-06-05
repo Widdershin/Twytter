@@ -34,6 +34,11 @@ get '/profile/:username' do
   erb :profile
 end
 
+get '/logout' do
+  session[:user_id] = nil
+  redirect to '/'
+end
+
 post '/login' do
   username = params[:username]
   password = params[:password]
