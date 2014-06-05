@@ -1,6 +1,11 @@
 <div class="container">
 <h1>Profile of: <%= @username %></h1>
 
+<form action="/twyt" method="post">
+  <input type="text" name="twyt" id="twyt_box">
+  <input type="submit" value="Post!">
+</form>
+
   <h2>Twyts:</h2>
   <% @twytlist.each do |twyt| %>
     Username: <%= @username %><br>

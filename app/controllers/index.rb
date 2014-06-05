@@ -19,7 +19,7 @@ before do
 end
 
 get '/' do
-  # Look in app/views/index.erb
+# Look in app/views/index.erb
   erb :index
 end
 

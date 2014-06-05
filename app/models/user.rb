@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   def set_password(password)
     self.password_hash = self.class.hash_password(password)
+    save
   end
 
   def self.authenticate(username, password)
@@ -20,6 +21,17 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  def self.make(options = {})
+    username = options.fetch(:username)
+    email = options.fetch(:email)
+    password = options.fetch(:password)
+
+    user = User.new(username: username, email: email)
+    user.set_password(password)
+
+    user
   end
 
   private
