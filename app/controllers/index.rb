@@ -42,3 +42,17 @@ post '/login' do
 
   redirect to '/profile'
 end
+
+post '/twyt' do
+  message = params[:twyt]
+  if message.size < 140
+    @user.post_twyt(message)
+  else
+    flash[:error] = "Error: Twyts must be 140 characters or less."
+  end
+
+  redirect to '/profile'
+end
+
+
+

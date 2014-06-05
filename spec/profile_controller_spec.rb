@@ -14,14 +14,19 @@ describe "Profile controller" do
 
     visit '/profile'
 
-    current_path.should eq '/profile'
-
     fill_in 'twyt', :with => 'The toilet sure is lonely...'
     click_button 'Post!'
 
-    current_path.should eq "/twyt"
+    expect(page).to have_content 'The toilet sure is lonely...'
   end
 
+  it "displays an error message if you try and make a twyt over 140 characters" do
 
+    visit '/profile'
 
+    fill_in 'twyt', :with => 'a' * 150
+    click_button 'Post!'
+
+    expect(page).to have_content 'Error: Twyts must be 140 characters or less.'
+  end
 end
