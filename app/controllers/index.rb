@@ -10,7 +10,6 @@ end
 
 helpers do
   def is_user?
-
     @user != nil
   end
 end
@@ -20,7 +19,7 @@ before do
 end
 
 get '/' do
-  # Look in app/views/index.erb
+# Look in app/views/index.erb
   erb :index
 end
 
@@ -46,3 +45,17 @@ post '/login' do
 
   redirect to '/profile'
 end
+
+post '/twyt' do
+  message = params[:twyt]
+  if message.size < 140
+    @user.post_twyt(message)
+  else
+    flash[:error] = "Error: Twyts must be 140 characters or less."
+  end
+
+  redirect to '/profile'
+end
+
+
+

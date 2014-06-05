@@ -21,4 +21,10 @@ describe User do
     new_user = User.create(username: @user.username, email: "foo@bar.com")
     expect(new_user.valid?).to be_false
   end
+
+  it 'lets you post a new twyt' do
+    twyt = @user.post_twyt("Damn the toilet is lonely...")
+
+    expect(@user.twyts).to include twyt
+  end
 end
