@@ -6,10 +6,6 @@ class User < ActiveRecord::Base
   # has_many :followed_users, :through => :follows, source => User
   # has_many :followers, :through => :follows, source => User
 
-  def set_password(password)
-    self.password_hash = self.class.hash_password(password)
-  end
-
   def self.authenticate(username, password)
     user = User.find_by_username(username)
 
@@ -20,6 +16,26 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  def self.make(options = {})
+    username = options.fetch(:username)
+    email = options.fetch(:email)
+    password = options.fetch(:password)
+
+    user = User.new(username: username, email: email)
+    user.set_password(password)
+
+    user
+  end
+
+  def set_password(password)
+    self.password_hash = self.class.hash_password(password)
+    save
+  end
+
+  def post_twyt(message)
+    twyts.create(message: message)
   end
 
   private
