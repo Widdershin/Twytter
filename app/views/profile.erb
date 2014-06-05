@@ -7,7 +7,7 @@
     <%= styled_flash %>
   <% end %>
 
-  <%= erb '_twyts'.to_sym %>
+  <%= erb :_twyts %>
 
   <h2>Followers:</h2>
   <% @user.is_followed_by.each do |follower| %>
