@@ -1,5 +1,5 @@
 <h2>Twyts:</h2>
-<% @user.twyts.each do |twyt| %>
-  Username: <%= @user %><br>
+<% @twyt_list.each do |twyt| %>
+  Username: <%= twyt.user %><br>
   Message: <%=twyt.message%><br><br>
 <% end %>

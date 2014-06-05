@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def twyts_following
-    follows_users.map(&:twyts).flatten
+    follows_users.map(&:twyts).flatten.sort_by(&:created_at).reverse
   end
 
   def to_s

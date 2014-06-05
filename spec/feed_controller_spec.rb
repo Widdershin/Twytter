@@ -17,4 +17,21 @@ describe "Feed controller" do
 
     expect(page).to have_content 'Feed'
   end
+
+  it 'displays the twit messages of your followers' do
+    followed_user = User.create(username: 'TestTarget', email: 'testtarget@example.com')
+    @twyt1 = followed_user.post_twyt("test message 1")
+    followed_user2 = User.create(username: 'TestTarget2', email: 'testtarget2@example.com')
+    @twyt2 = followed_user2.post_twyt("test message 2")
+
+    @user.follows_users << followed_user
+    @user.follows_users << followed_user2
+
+    visit '/'
+
+    expect(page).to have_content @twyt1.message
+    expect(page).to have_content @twyt2.message
+    expect(page).to have_content followed_user.username
+    expect(page).to have_content followed_user2.username
+  end
 end
