@@ -3,9 +3,8 @@
 
   <h2>Twyts:</h2>
   <% @twytlist.each do |twyt| %>
-    <%= twyt.user.username%><br>
-    <%=twyt.message%>
-
+    Username: <%= @username %><br>
+    Message: <%=twyt.message%><br><br>
   <% end %>
 
 
