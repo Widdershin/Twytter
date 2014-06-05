@@ -30,6 +30,7 @@ get '/profile', :auth => :user do
 end
 
 get '/profile/:username' do
+  # TODO: Don't jack @user for this, would break any layout.erb things that use @user
   @user = User.find_by_username(params[:username])
   erb :profile
 end
