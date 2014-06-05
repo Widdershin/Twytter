@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     twyts.create(message: message)
   end
 
+  def to_s
+    username
+  end
+
   private
 
   def self.hash_password(password)

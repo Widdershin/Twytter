@@ -24,16 +24,13 @@ get '/' do
 end
 
 get '/profile', :auth => :user do
-  @username = @user.username
-  @twytlist = @user.twyts
   # @followers = @user.followers
   # @followed_users = @user.followed_users
-  erb :profile
+  erb :my_profile
 end
 
 get '/profile/:username' do
   @user = User.find_by_username(params[:username])
-  @username = @user.username; @twytlist = @user.twyts
   erb :profile
 end
 
