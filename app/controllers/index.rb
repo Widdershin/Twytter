@@ -3,13 +3,14 @@ set :sessions, true
 register do
   def auth (type)
     condition do
-      redirect "/login" unless send("is_#{type}?")
+      redirect "/" unless is_user?
     end
   end
 end
 
 helpers do
   def is_user?
+
     @user != nil
   end
 end
