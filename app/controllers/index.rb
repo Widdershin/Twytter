@@ -16,12 +16,7 @@ helpers do
 end
 
 before do
-  user_id = session[:user_id]
-  @user = if !user_id.nil?
-            User.find(user_id)
-          else
-            nil
-          end
+  @user = User.find_by_id(session[:user_id])
 end
 
 get '/' do
