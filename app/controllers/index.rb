@@ -62,7 +62,7 @@ post '/twyt' do
     flash[:error] = "Error: Twyts must be 140 characters or less."
   end
 
-  redirect to '/profile'
+  redirect to previous_url(request)
 end
 
 

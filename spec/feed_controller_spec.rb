@@ -34,4 +34,14 @@ describe "Feed controller" do
     expect(page).to have_content followed_user.username
     expect(page).to have_content followed_user2.username
   end
+
+  it 'has a twyt bar' do
+    visit '/'
+
+    fill_in 'twyt', :with => 'The toilet sure is lonely...'
+    click_button 'Post!'
+
+    expect(current_path).to eq '/'
+  end
+
 end

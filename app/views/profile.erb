@@ -2,23 +2,21 @@
   <h1>Profile of: <%= @user %></h1>
 
   <% if @show_twyt_bar %>
-  <form action="/twyt" method="post">
-    <input type="text" name="twyt" id="twyt_box">
-    <input type="submit" value="Post!">
-  </form>
+    <%= erb :_twyt_bar %>
 
-  <%= styled_flash %>
+    <%= styled_flash %>
   <% end %>
+
   <%= erb '_twyts'.to_sym %>
 
   <h2>Followers:</h2>
-    <% @user.is_followed_by.each do |follower| %>
-      <%= follower.username %></br>
+  <% @user.is_followed_by.each do |follower| %>
+    <%= follower.username %></br>
   <% end %>
 
   <h2>Following:</h2>
-    <% @user.follows_users.each do |followed_user| %>
-      <%= followed_user.username %></br>
+  <% @user.follows_users.each do |followed_user| %>
+    <%= followed_user.username %></br>
   <% end %>
 
   </br>
