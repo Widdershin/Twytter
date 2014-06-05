@@ -1,0 +1,14 @@
+<div class="container">
+<h1>Profile of: <%= @username %></h1>
+
+  <h2>Twyts:</h2>
+  <% @twytlist.each do |twyt| %>
+    Username: <%= @username %><br>
+    Message: <%=twyt.message%><br><br>
+  <% end %>
+
+
+</div>
+
+
+
