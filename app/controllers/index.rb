@@ -19,18 +19,24 @@ before do
 end
 
 get '/' do
-# Look in app/views/index.erb
-  erb :index
+  if is_user?
+    @twyt_list = @user.twyts_following
+    erb :feed
+  else
+    erb :index
+  end
 end
 
 get '/profile', :auth => :user do
   @show_twyt_bar = true
+  @twyt_list = @user.twyts
   erb :profile
 end
 
 get '/profile/:username' do
   # TODO: Don't jack @user for this, would break any layout.erb things that use @user
   @user = User.find_by_username(params[:username])
+  @twyt_list = @user.twyts
   erb :profile
 end
 
@@ -45,7 +51,7 @@ post '/login' do
 
   session[:user_id] = User.authenticate(username, password)
 
-  redirect to '/profile'
+  redirect to '/'
 end
 
 post '/twyt' do
@@ -56,7 +62,7 @@ post '/twyt' do
     flash[:error] = "Error: Twyts must be 140 characters or less."
   end
 
-  redirect to '/profile'
+  redirect to previous_url(request)
 end
 
 
