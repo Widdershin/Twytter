@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     twyts.create(message: message)
   end
 
+  def twyts_following
+    follows_users.map(&:twyts).flatten
+  end
+
   def to_s
     username
   end

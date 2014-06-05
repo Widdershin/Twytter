@@ -19,8 +19,11 @@ before do
 end
 
 get '/' do
-# Look in app/views/index.erb
-  erb :index
+  if is_user?
+    erb :feed
+  else
+    erb :index
+  end
 end
 
 get '/profile', :auth => :user do

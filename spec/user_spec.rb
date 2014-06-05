@@ -27,4 +27,20 @@ describe User do
 
     expect(@user.twyts).to include twyt
   end
+
+  it 'gives a list of the twyts of followed users' do
+
+
+    followed_user = User.create(username: 'TestTarget', email: 'testtarget@example.com')
+    twyt1 = followed_user.post_twyt("test message 1")
+    followed_user2 = User.create(username: 'TestTarget2', email: 'testtarget2@example.com')
+    twyt2 = followed_user2.post_twyt("test message 2")
+
+    @user.follows_users << followed_user
+    @user.follows_users << followed_user2
+
+    expect(@user.twyts_following).to include(twyt1)
+    expect(@user.twyts_following).to include(twyt2)
+  end
+
 end
