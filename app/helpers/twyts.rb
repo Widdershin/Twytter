@@ -5,8 +5,7 @@ helpers do
 
   def render_twyt(twyt)
   <<-HTML
-  Username: #{twyt.user} <br>
-  Message: #{twyt.message} <br>
+  @#{twyt.user.profile_link} - #{linkify_usernames(twyt.message)} <br>
   <form action='/twyt' method='post'>
     <input type='hidden' name='twyt' value='RT @#{ twyt.user }: #{ twyt.message }'>
     <input type='submit' value='Retweet'>
@@ -18,4 +17,9 @@ helpers do
   </form><br>
   HTML
   end
+
+  def linkify_usernames(message)
+    message.gsub(/@(\w+)/) { "@#{User.linkify_username($1)}" }
+  end
+
 end
