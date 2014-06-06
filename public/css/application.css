@@ -7,6 +7,7 @@ h1 {
 
 body {
   background-color: black;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -71,26 +72,30 @@ PROFILE STYLES
 
 
 .banner {
-  background-color: #27ae60;
+  background-image: url("bg.png");
   height:250px;
 }
 
 .wrapper {
   background-color: green;
-  min-height:800px;
+  min-height: 1090px;
   width: 100%;
   margin: 0 auto;
 }
 
 .side-bar {
   background-color: #61adea;
+<<<<<<< HEAD
+  min-height: 1000px;
+=======
   min-height: 729px;
+>>>>>>> 0c74b0df60d6e74c8932bbfe3de4ec76857cf8a3
   width: 30%;
   float: left;
 }
 .log {
   background-color: #61adea;
-  min-height: 729px;
+  height: 1127px;
   width: 70%;
   float: left;
 }
@@ -101,7 +106,7 @@ PROFILE STYLES
   margin-right: auto;
   margin-left: auto;
   width: 80%;
-  min-height: 590px;
+  min-height: 1090px;
   padding-top: 20px;
 }
 
@@ -112,7 +117,7 @@ PROFILE STYLES
   margin-right: auto;
   margin-left: auto;
   width: 80%;
-  min-height: 460px;
+  min-height: 1080px;
   border-radius: 15px;
 }
 
@@ -123,7 +128,7 @@ PROFILE STYLES
   margin: auto;
 }
 
-.followers, .following, .compose {
+.followers, .following, .compose, .favourite  {
   background-color: white;
   height: 200px;
   width: 80%;
@@ -132,8 +137,18 @@ PROFILE STYLES
 }
 
 .compose {
-  height: 70px;
+  height: 200px;
 }
+
+.compose_twyt {
+  font-size: 20px;
+}
+
+#blue {
+  background-color: #61adea;
+}
+
+
 
 /************************************
 LOGIN STYLING
