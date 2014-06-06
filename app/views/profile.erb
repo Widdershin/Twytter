@@ -1,31 +1,62 @@
 <div class="container">
-  <h1>Profile of: <%= @user %></h1>
-  <% if !@our_profile %>
-  <form action='/follow' method='post'>
-    <input type='hidden' name='user' value='<%= @user.id %>'>
-    <input type='submit' value='Follow'>
-  </form>
-  <% end %>
 
-  <% if @our_profile %>
-    <%= erb :_twyt_bar %>
-  <% end %>
+  <div class="header">
+    <h1>Twytter</h1>
+    <nav>
+      <ul>
+        <li><a href='/logout'>Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="banner">
+  </div>
 
-  <%= styled_flash %>
+  <div class="wrapper">
+    <div class="side-bar">
+      <div class="popeye">
+        <div class="gravatar"></div>
+        <br>
+        <h1><%= @user %>'s profile</h1><br>
 
-  <%= erb :_twyts %>
+        <% if !@our_profile %>
+        <form action='/follow' method='post'>
+          <input type='hidden' name='user' value='<%= @user.id %>'>
+          <input type='submit' value='Follow'>
+        </form>
+        <% end %>
+        <br><br>
 
-  <h2>Followers:</h2>
-  <% @user.is_followed_by.each do |follower| %>
-    <%= follower.username %></br>
-  <% end %>
+        <div class="compose"
+          <h2>Compose new twyt</h2>
+          <% if @our_profile %>
+          <%= erb :_twyt_bar %>
+          <% end %>
 
-  <h2>Following:</h2>
-  <% @user.follows_users.each do |followed_user| %>
-    <%= followed_user.username %></br>
-  <% end %>
+          <%= styled_flash %>
+        </div>
 
-  </br>
+        <div class="followers">
+          <h2>Followers:</h2>
+          <% @user.is_followed_by.each do |follower| %>
+            <%= follower.username %></br>
+          <% end %>
+        </div>
 
-  <a href='/logout'>Logout</a>
+        <div class="following">
+           <h2>Following:</h2>
+           <% @user.follows_users.each do |followed_user| %>
+          <%= followed_user.username %></br>
+           <% end %>
+        </div>
+
+      </div>
+    </div>
+    <div class="log">
+      <div class="stream">
+         <%= erb :_twyts %>
+      </div>
+    </div>
+  </div>
+
 </div>
+

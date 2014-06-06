@@ -1,7 +1,16 @@
-<div class="container">
-  <form action='/login' method='post'>
-    Username: <input name='username' type='text'/><br/>
-    Password: <input name='password' type='password'/><br/>
-    <input type='submit' value='Login'/>
-  </form>
+<div class="container" id="bgcolor">
+  <div class="header">
+    <h1>Twytter</h1>
+  </div>
+
+  <div class="loginbox">
+    <form action='/login' method='post'>
+      <table class="center">
+        <tr><td><input name='username' placeholder="username" type='text'/></td></tr>
+        <tr><td><input name='password' placeholder="password" type='password'/></td></tr>
+
+      </table>
+      <input class="btn" type='submit' value='Login'/>
+    </form>
+  </div>
 </div>
