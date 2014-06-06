@@ -59,7 +59,7 @@ post '/login' do
   redirect to '/'
 end
 
-post '/twyt' do
+post '/twyt', logged_in: true do
   message = params[:twyt]
   if message.size < 140
     @user.post_twyt(message)
@@ -70,7 +70,7 @@ post '/twyt' do
   redirect to previous_url(request)
 end
 
-post '/follow' do
+post '/follow', logged_in: true do
   user_to_follow = User.find_by_id(params[:user])
 
   if @user.follows_users.include? user_to_follow
