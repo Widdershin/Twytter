@@ -1,15 +1,15 @@
 set :sessions, true
 
 register do
-  def auth (type)
+  def logged_in (bool)
     condition do
-      redirect "/" unless is_user?
+      redirect "/" unless is_logged_in? == bool
     end
   end
 end
 
 helpers do
-  def is_user?
+  def is_logged_in?
     @user != nil
   end
 end
@@ -19,18 +19,29 @@ before do
 end
 
 get '/' do
-# Look in app/views/index.erb
-  erb :index
+  if is_logged_in?
+    @twyt_list = @user.twyts_feed
+    erb :feed
+  else
+    erb :index
+  end
 end
 
-get '/profile', :auth => :user do
-  @show_twyt_bar = true
+get '/profile', :logged_in => true do
+  @our_profile = true
+  @twyt_list = @user.twyts.reverse
   erb :profile
 end
 
 get '/profile/:username' do
   # TODO: Don't jack @user for this, would break any layout.erb things that use @user
-  @user = User.find_by_username(params[:username])
+  username = params[:username]
+  if is_logged_in? && username == @user.username
+    redirect to '/profile'
+  end
+
+  @user = User.find_by_username(username)
+  @twyt_list = @user.twyts.reverse
   erb :profile
 end
 
@@ -45,10 +56,10 @@ post '/login' do
 
   session[:user_id] = User.authenticate(username, password)
 
-  redirect to '/profile'
+  redirect to '/'
 end
 
-post '/twyt' do
+post '/twyt', logged_in: true do
   message = params[:twyt]
   if message.size < 140
     @user.post_twyt(message)
@@ -56,8 +67,18 @@ post '/twyt' do
     flash[:error] = "Error: Twyts must be 140 characters or less."
   end
 
-  redirect to '/profile'
+  redirect to previous_url(request)
 end
 
+post '/follow', logged_in: true do
+  user_to_follow = User.find_by_id(params[:user])
 
+  if @user.follows_users.include? user_to_follow
+    flash[:error] = 'Error: you are already following this user'
+  else
+    @user.follow(user_to_follow)
+  end
+
+  redirect to previous_url(request)
+end
 

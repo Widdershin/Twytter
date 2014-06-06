@@ -13,6 +13,8 @@ require 'rack/test'
 require 'capybara'
 require 'capybara/rspec'
 
+require './spec/support/login_helper'
+
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Capybara::DSL
@@ -22,8 +24,8 @@ def app
   Sinatra::Application
 end
 
-
 Capybara.configure do |config|
   config.run_server = false
   config.app = app
 end
+

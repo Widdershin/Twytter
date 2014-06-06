@@ -1,5 +1,9 @@
 <h2>Twyts:</h2>
-<% @user.twyts.each do |twyt| %>
-  Username: <%= @user %><br>
-  Message: <%=twyt.message%><br><br>
+<% @twyt_list.each do |twyt| %>
+  Username: <%= twyt.user %><br>
+  Message: <%=twyt.message%><br>
+  <form action='/twyt' method='post'>
+    <input type='hidden' name='twyt' value='RT @<%= twyt.user %>: <%= twyt.message %>'>
+    <input type='submit' value='Retweet'>
+  </form><br>
 <% end %>

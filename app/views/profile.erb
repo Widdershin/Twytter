@@ -16,51 +16,47 @@
       <div class="popeye">
         <div class="gravatar"></div>
         <br>
-        <h1><%= @user %>'s profile</h1>
-        <br><br><br>
+        <h1><%= @user %>'s profile</h1><br>
+
+        <% if !@our_profile %>
+        <form action='/follow' method='post'>
+          <input type='hidden' name='user' value='<%= @user.id %>'>
+          <input type='submit' value='Follow'>
+        </form>
+        <% end %>
+        <br><br>
 
         <div class="compose"
           <h2>Compose new twyt</h2>
-          <% if @show_twyt_bar %>
-          <form action="/twyt" method="post">
-            <input type="text" name="twyt" id="twyt_box">
-            <input type="submit" value="Post!">
-          </form>
+          <% if @our_profile %>
+          <%= erb :_twyt_bar %>
+          <% end %>
 
           <%= styled_flash %>
-          <% end %>
         </div>
 
         <div class="followers">
           <h2>Followers:</h2>
-            <% @user.is_followed_by.each do |follower| %>
-              <%= follower.username %></br>
+          <% @user.is_followed_by.each do |follower| %>
+            <%= follower.username %></br>
           <% end %>
         </div>
 
         <div class="following">
-          <h2>Following:</h2>
-            <% @user.follows_users.each do |followed_user| %>
-              <%= followed_user.username %></br>
-          <% end %>
+           <h2>Following:</h2>
+           <% @user.follows_users.each do |followed_user| %>
+          <%= followed_user.username %></br>
+           <% end %>
         </div>
 
       </div>
     </div>
     <div class="log">
       <div class="stream">
-        <%= erb '_twyts'.to_sym %>
+         <%= erb :_twyts %>
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
 
 </div>
 

@@ -27,4 +27,36 @@ describe User do
 
     expect(@user.twyts).to include twyt
   end
+
+  it 'can follow a user' do
+    new_user = User.create(username: 'other_test_user', email: "foo@bar.com")
+    @user.follow new_user
+    expect(@user.follows_users).to include(new_user)
+  end
+
+  describe '#twyts_feed' do
+
+    before do
+      Twyt.delete_all
+
+      followed_user = User.create(username: 'TestTarget', email: 'testtarget@example.com')
+      @twyt1 = followed_user.post_twyt("test message 1")
+      followed_user2 = User.create(username: 'TestTarget2', email: 'testtarget2@example.com')
+      @twyt2 = followed_user2.post_twyt("test message 2")
+
+      @user.follows_users << followed_user
+      @user.follows_users << followed_user2
+    end
+
+    it 'gives a list of the twyts of followed users' do
+      expect(@user.twyts_feed).to include(@twyt1)
+      expect(@user.twyts_feed).to include(@twyt2)
+    end
+
+    it 'sorts the list of twyts of followed users most recent first' do
+      expect(@user.twyts_feed).to eq [@twyt2, @twyt1]
+    end
+
+  end
+
 end
