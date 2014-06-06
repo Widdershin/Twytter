@@ -26,7 +26,7 @@
         <% end %>
         <br><br>
 
-        <div class="compose"
+        <div class="compose">
           <h2>Compose new twyt</h2>
           <% if @our_profile %>
           <%= erb :_twyt_bar %>
@@ -43,16 +43,18 @@
         <div class="followers">
           <h2>Followers:</h2>
           <% @user.is_followed_by.each do |follower| %>
-            <%= follower.username %></br>
+            <%= gravatar_tag follower.email, size: 40  %></br>
           <% end %>
         </div>
 
         <div class="following">
            <h2>Following:</h2>
            <% @user.follows_users.each do |followed_user| %>
-          <%= followed_user.username %></br>
+          <%= gravatar_tag followed_user.email, size: 40  %></br>
            <% end %>
         </div>
+
+
 
       </div>
     </div>

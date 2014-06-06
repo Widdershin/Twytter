@@ -72,26 +72,26 @@ PROFILE STYLES
 
 
 .banner {
-  background-image: url("banner.png");
+  background-image: url("bg.png");
   height:250px;
 }
 
 .wrapper {
   background-color: green;
-  min-height:800px;
+  min-height: 1090px;
   width: 100%;
   margin: 0 auto;
 }
 
 .side-bar {
   background-color: #61adea;
-  height: 1000px;
+  min-height: 1000px;
   width: 30%;
   float: left;
 }
 .log {
   background-color: #61adea;
-  height: 1000px;
+  height: 1127px;
   width: 70%;
   float: left;
 }
@@ -103,7 +103,7 @@ PROFILE STYLES
   margin-right: auto;
   margin-left: auto;
   width: 80%;
-  min-height: 590px;
+  min-height: 1090px;
   padding-top: 20px;
 }
 
@@ -114,7 +114,7 @@ PROFILE STYLES
   margin-right: auto;
   margin-left: auto;
   width: 80%;
-  min-height: 460px;
+  min-height: 1080px;
   border-radius: 15px;
 }
 
@@ -125,7 +125,7 @@ PROFILE STYLES
   margin: auto;
 }
 
-.followers, .following, .compose {
+.followers, .following, .compose, .favourite  {
   background-color: white;
   height: 200px;
   width: 80%;
@@ -134,8 +134,18 @@ PROFILE STYLES
 }
 
 .compose {
-  height: 70px;
+  height: 200px;
 }
+
+.compose_twyt {
+  font-size: 20px;
+}
+
+#blue {
+  background-color: #61adea;
+}
+
+
 
 /************************************
 LOGIN STYLING
