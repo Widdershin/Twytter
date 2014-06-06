@@ -35,7 +35,12 @@ end
 
 get '/profile/:username' do
   # TODO: Don't jack @user for this, would break any layout.erb things that use @user
-  @user = User.find_by_username(params[:username])
+  username = params[:username]
+  if is_user? && username == @user.username
+    redirect to '/profile'
+  end
+
+  @user = User.find_by_username(username)
   @twyt_list = @user.twyts.reverse
   erb :profile
 end

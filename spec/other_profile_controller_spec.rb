@@ -38,6 +38,12 @@ describe 'The controller for other users profiles' do
 
       expect(page).to have_content('Error: you are already following this user')
     end
+
+    it "doesn't let you view your profile as if you were someone else" do
+      visit '/profile/test_user'
+
+      expect(current_path).to eq '/profile'
+    end
   end
 
 
