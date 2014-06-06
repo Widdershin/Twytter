@@ -84,7 +84,7 @@ PROFILE STYLES
 
 .side-bar {
   background-color: #61adea;
-  min-height: 500px;
+  min-height: 729px;
   width: 30%;
   float: left;
 }
@@ -95,7 +95,6 @@ PROFILE STYLES
   float: left;
 }
 .popeye{
-
 
   text-align: center;
   margin-top: -90px;
@@ -181,8 +180,32 @@ td {
 }
 
 
+/*************************
+FEED STYLES
+************************/
 
+.feedtweet {
+  height: 150px;
+  width:80%;
+  background-color: orange;
+}
 
+.tweethead {
+  height: 50px;
+  width: 50%;
+  background-color: purple;
+}
+
+.tweetuser {
+  height: 50px;
+  width: 60%;
+  background-color: red;
+}
+
+.retweet {
+  height: 50px;
+  width: 40%;
+}
 
 
 
