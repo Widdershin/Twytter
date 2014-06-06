@@ -28,7 +28,7 @@ get '/' do
 end
 
 get '/profile', :auth => :user do
-  @show_twyt_bar = true
+  @our_profile = true
   @twyt_list = @user.twyts.reverse
   erb :profile
 end
@@ -65,5 +65,9 @@ post '/twyt' do
   redirect to previous_url(request)
 end
 
-
+post '/follow' do
+  user_to_follow = User.find_by_id(params[:user])
+  @user.follow(user_to_follow)
+  redirect to previous_url(request)
+end
 

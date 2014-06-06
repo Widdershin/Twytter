@@ -28,6 +28,12 @@ describe User do
     expect(@user.twyts).to include twyt
   end
 
+  it 'can follow a user' do
+    new_user = User.create(username: 'other_test_user', email: "foo@bar.com")
+    @user.follow new_user
+    expect(@user.follows_users).to include(new_user)
+  end
+
   describe '#twyts_following' do
 
     before do
@@ -52,4 +58,5 @@ describe User do
     end
 
   end
+
 end

@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     follows_users.map(&:twyts).flatten.sort_by(&:created_at).reverse
   end
 
+  def follow(user)
+    follows_users << user
+  end
+
   def to_s
     username
   end

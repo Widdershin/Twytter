@@ -1,7 +1,13 @@
 <div class="container">
   <h1>Profile of: <%= @user %></h1>
+  <% if !@our_profile %>
+  <form action='/follow' method='post'>
+    <input type='hidden' name='user' value='<%= @user.id %>'>
+    <input type='submit' value='Follow'>
+  </form>
+  <% end %>
 
-  <% if @show_twyt_bar %>
+  <% if @our_profile %>
     <%= erb :_twyt_bar %>
 
     <%= styled_flash %>

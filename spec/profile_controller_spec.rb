@@ -4,11 +4,8 @@ describe "Profile controller" do
   before do
     User.delete_all
     @user = User.make(username: 'test_user', email: 'foo@bar.com', password: 'test')
-    visit '/'
 
-    fill_in 'username', :with => "test_user"
-    fill_in 'password', :with => "test"
-    click_button 'Login'
+    login('test_user', 'test')
   end
 
   it 'lets you write and post a twyt' do
