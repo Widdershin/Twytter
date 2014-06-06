@@ -185,12 +185,14 @@ FEED STYLES
 ************************/
 
 .feedtweet {
+  margin:auto;
   height: 150px;
   width:80%;
   background-color: orange;
 }
 
 .tweethead {
+
   height: 50px;
   width: 50%;
   background-color: purple;
@@ -200,13 +202,20 @@ FEED STYLES
   height: 50px;
   width: 60%;
   background-color: red;
+  float:left;
 }
 
 .retweet {
   height: 50px;
   width: 40%;
+  background-color: green;
+  float:left;
 }
 
+.tweetmessage {
+  height: 100px;
+  width: 300px;
+}
 
 
 
