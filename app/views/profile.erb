@@ -4,6 +4,7 @@
     <h1>Twytter</h1>
     <nav>
       <ul>
+        <li><a href='/'>Feed</a></li>
         <li><a href='/logout'>Logout</a></li>
       </ul>
     </nav>
@@ -44,6 +45,8 @@
           <h2>Followers:</h2>
           <% @user.is_followed_by.each do |follower| %>
             <%= gravatar_tag follower.email, size: 40  %></br>
+            <%= follower.profile_link %></br>
+
           <% end %>
         </div>
 
@@ -51,6 +54,7 @@
            <h2>Following:</h2>
            <% @user.follows_users.each do |followed_user| %>
           <%= gravatar_tag followed_user.email, size: 40  %></br>
+          @<%= followed_user.profile_link %></br>
            <% end %>
         </div>
 

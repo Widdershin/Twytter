@@ -21,6 +21,7 @@ end
 
 get '/' do
   if is_logged_in?
+    @our_profile = true
     @twyt_list = @user.twyts_feed
     erb :feed
   else
