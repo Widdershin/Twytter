@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true
   has_many :twyts
+  has_many :favourite_twyts
+  has_many :favourites, through: :favourite_twyts, source: :twyt
 
   has_many :follows_target, class_name: 'Follow', foreign_key: 'origin_id'
   has_many :follows_users, through: :follows_target, :source => 'target'
@@ -50,6 +52,14 @@ class User < ActiveRecord::Base
     follows_users << user
   end
 
+  def favourite(twyt)
+    favourites << twyt
+  end
+
+  def profile_link
+    self.class.linkify_username(username)
+  end
+
   def to_s
     username
   end
@@ -58,6 +68,10 @@ class User < ActiveRecord::Base
 
   def self.hash_password(password)
     Digest::MD5.hexdigest password
+  end
+
+  def self.linkify_username(username)
+    "<a href='/profile/#{username}'>#{username}</a>"
   end
 
   def followed_user_twyts

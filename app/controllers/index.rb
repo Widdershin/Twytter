@@ -1,4 +1,5 @@
 set :sessions, true
+helpers Gravatarify::Helper
 
 register do
   def logged_in (bool)
@@ -78,6 +79,19 @@ post '/follow', logged_in: true do
     flash[:error] = 'Error: you are already following this user'
   else
     @user.follow(user_to_follow)
+  end
+
+  redirect to previous_url(request)
+end
+
+post '/favourite', logged_in: true do
+  twyt = Twyt.find_by_id(params[:twyt_id])
+
+  if @user.favourites.include? twyt
+    flash[:error] = "Error: You already favourited this twyt"
+  else
+    @user.favourite twyt
+    flash[:success] = 'Added twyt to favourites!'
   end
 
   redirect to previous_url(request)
