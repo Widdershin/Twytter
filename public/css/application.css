@@ -1,10 +1,195 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+html,
+body,
+h1 {
+  margin: 0;
+  padding: 0;
 }
 
-th {
-  text-align: left;
+body {
+  background-color: black;
 }
+
+
+/**************************
+PROFILE STYLES
+***************************/
+
+
+.container {
+  background-color: white;
+  min-height: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #222446;
+  height: 70px;
+  padding-left: 30px;
+  padding-top: 5px;
+}
+
+.header h1 {
+  background-image: url("logo.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+  height: 60px;
+  width: 74px;
+  text-indent: -9999px;
+  float: left;
+  padding: 2px;
+}
+
+.header nav {
+  height: 100%;
+  float: right;
+  margin-right: 20px;
+}
+
+.header ul {
+  height: 100%;
+
+}
+
+.header li {
+  display: inline-block;
+  height: 100%;
+  margin-left: 20px;
+
+}
+
+.header li a {
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 30px;
+  background-color: #61adea;
+  font-size: 20px;
+  padding: 5px 8px;
+  border-radius: 10px;
+}
+
+
+.banner {
+  background-color: #27ae60;
+  height:250px;
+}
+
+.wrapper {
+  background-color: green;
+  min-height:800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.side-bar {
+  background-color: #61adea;
+  min-height: 500px;
+  width: 30%;
+  float: left;
+}
+.log {
+  background-color: #61adea;
+  min-height: 729px;
+  width: 70%;
+  float: left;
+}
+.popeye{
+
+
+  text-align: center;
+  margin-top: -90px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+  min-height: 590px;
+  padding-top: 20px;
+}
+
+.stream {
+  background-color: #fff;
+  text-align: center;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+  min-height: 460px;
+  border-radius: 15px;
+}
+
+.gravatar {
+  height: 180px;
+  width: 180px;
+  background-color: green;
+  margin: auto;
+}
+
+.followers, .following, .compose {
+  background-color: white;
+  height: 200px;
+  width: 80%;
+  margin: auto;
+  border-radius: 15px;
+}
+
+.compose {
+  height: 70px;
+}
+
+/************************************
+LOGIN STYLING
+************************************/
+
+#bgcolor {
+  background-color: #61adea;
+  height: 100%
+}
+
+.loginbox {
+  text-align: center;
+  padding-top: 20%;
+}
+
+input {
+  border-radius: 7px;
+  padding: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+
+.center {
+  margin: auto;
+}
+
+table {
+  font-size: 20px;
+  color: #222446
+}
+
+.btn {
+  background-color: #fff;
+  font-size: 20px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  padding: 3px 30px;
+  color: #222446;
+  margin-top: 20px;
+}
+
+td {
+  padding: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
