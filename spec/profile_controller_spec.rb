@@ -6,12 +6,11 @@ describe "Profile controller" do
     @user = User.make(username: 'test_user', email: 'foo@bar.com', password: 'test')
 
     login('test_user', 'test')
+
+    visit '/profile'
   end
 
   it 'lets you write and post a twyt' do
-
-    visit '/profile'
-
     fill_in 'twyt', :with => 'The toilet sure is lonely...'
     click_button 'Post!'
 
@@ -19,9 +18,6 @@ describe "Profile controller" do
   end
 
   it "displays an error message if you try and make a twyt over 140 characters" do
-
-    visit '/profile'
-
     fill_in 'twyt', :with => 'a' * 150
     click_button 'Post!'
 
@@ -29,10 +25,19 @@ describe "Profile controller" do
   end
 
   it 'lets you logout' do
-    visit '/profile'
-
     click_link 'Logout'
 
     expect(current_path).to eq '/'
+  end
+
+  it 'displays your favourite twyts' do
+    other_user = User.create(username: 'other_user')
+    twyt = other_user.post_twyt('Best twyt ever')
+    @user.favourite(twyt)
+
+    visit '/profile'
+
+    expect(page).to have_content 'Favourites'
+    expect(page).to have_content twyt.message
   end
 end

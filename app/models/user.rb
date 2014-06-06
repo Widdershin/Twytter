@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true
   has_many :twyts
+  has_many :favourite_twyts
+  has_many :favourites, through: :favourite_twyts, source: :twyt
 
   has_many :follows_target, class_name: 'Follow', foreign_key: 'origin_id'
   has_many :follows_users, through: :follows_target, :source => 'target'
@@ -48,6 +50,10 @@ class User < ActiveRecord::Base
 
   def follow(user)
     follows_users << user
+  end
+
+  def favourite(twyt)
+    favourites << twyt
   end
 
   def to_s

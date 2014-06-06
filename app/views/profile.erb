@@ -35,6 +35,11 @@
           <%= styled_flash %>
         </div>
 
+        <div class="favourite">
+           <h2>Favourites</h2>
+           <%= render_twyts(@user.favourites) %>
+        </div>
+
         <div class="followers">
           <h2>Followers:</h2>
           <% @user.is_followed_by.each do |follower| %>
@@ -53,7 +58,7 @@
     </div>
     <div class="log">
       <div class="stream">
-         <%= erb :_twyts %>
+        <%= render_twyts(@twyt_list) %>
       </div>
     </div>
   </div>
