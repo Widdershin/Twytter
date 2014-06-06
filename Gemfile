@@ -18,6 +18,8 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'gravatarify'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'

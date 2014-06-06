@@ -1,4 +1,5 @@
 set :sessions, true
+helpers Gravatarify::Helper
 
 register do
   def logged_in (bool)
