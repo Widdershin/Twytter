@@ -7,6 +7,7 @@ h1 {
 
 body {
   background-color: black;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -71,7 +72,7 @@ PROFILE STYLES
 
 
 .banner {
-  background-color: #27ae60;
+  background-image: url("banner.png");
   height:250px;
 }
 
@@ -84,13 +85,13 @@ PROFILE STYLES
 
 .side-bar {
   background-color: #61adea;
-  min-height: 500px;
+  height: 1000px;
   width: 30%;
   float: left;
 }
 .log {
   background-color: #61adea;
-  min-height: 729px;
+  height: 1000px;
   width: 70%;
   float: left;
 }
