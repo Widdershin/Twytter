@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     favourites << twyt
   end
 
+  def profile_link
+    self.class.linkify_username(username)
+  end
+
   def to_s
     username
   end
@@ -64,6 +68,10 @@ class User < ActiveRecord::Base
 
   def self.hash_password(password)
     Digest::MD5.hexdigest password
+  end
+
+  def self.linkify_username(username)
+    "<a href='/profile/#{username}'>#{username}</a>"
   end
 
   def followed_user_twyts

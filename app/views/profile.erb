@@ -43,14 +43,14 @@
         <div class="followers">
           <h2>Followers:</h2>
           <% @user.is_followed_by.each do |follower| %>
-            <%= follower.username %></br>
+            @<%= follower.profile_link %></br>
           <% end %>
         </div>
 
         <div class="following">
            <h2>Following:</h2>
            <% @user.follows_users.each do |followed_user| %>
-          <%= followed_user.username %></br>
+          @<%= followed_user.profile_link %></br>
            <% end %>
         </div>
 
