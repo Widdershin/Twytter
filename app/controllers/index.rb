@@ -84,9 +84,13 @@ end
 
 post '/favourite', logged_in: true do
   twyt = Twyt.find_by_id(params[:twyt_id])
-  @user.favourite twyt
 
-  flash[:success] = 'Added twyt to favourites!'
+  if @user.favourites.include? twyt
+    flash[:error] = "Error: You already favourited this twyt"
+  else
+    @user.favourite twyt
+    flash[:success] = 'Added twyt to favourites!'
+  end
 
   redirect to previous_url(request)
 end

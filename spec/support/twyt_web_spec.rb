@@ -31,4 +31,12 @@ describe "Twyts web interaction" do
     expect(@user.favourites.last.message).to eq 'Wow such test'
   end
 
+  it "doesn't let you favourite a twyt twice" do
+    visit '/'
+
+    click_button 'Favourite'
+    click_button 'Favourite'
+
+    expect(page).to have_content('Error: You already favourited this twyt')
+  end
 end
