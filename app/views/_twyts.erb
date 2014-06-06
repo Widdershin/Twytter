@@ -1,17 +1,4 @@
 <h2>Twyts:</h2>
 <% @twyt_list.each do |twyt| %>
-<div class = 'feedtweet'>
-  <div class = 'tweethead'>
-    <div class = 'tweetuser'>
-    From: <%= twyt.user %>
-    </div>
-    </div class = 'retweet'>
-      <input type='submit' value='Retweet'>
-    </div>
-  </div>
-  Message: <%=twyt.message%><br>
-  <form action='/twyt' method='post'>
-    <input type='hidden' name='twyt' value='RT @<%= twyt.user %>: <%= twyt.message %>'>
-  </form><br>
-</div>
+  <%= render_twyt(twyt) %>
 <% end %>

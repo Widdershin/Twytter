@@ -15,7 +15,7 @@
   <div class="wrapper">
     <div class="side-bar">
       <div class="popeye">
-        <div class="gravatar"></div>
+        <div class="gravatar"><%= gravatar_tag @user.email, size: 180 %></div>
         <br>
         <h1><%= @user %>'s profile</h1><br>
 
@@ -36,17 +36,22 @@
           <%= styled_flash %>
         </div>
 
+        <div class="favourite">
+           <h2>Favourites</h2>
+           <%= render_twyts(@user.favourites) %>
+        </div>
+
         <div class="followers">
           <h2>Followers:</h2>
           <% @user.is_followed_by.each do |follower| %>
-            <%= follower.username %></br>
+            @<%= follower.profile_link %></br>
           <% end %>
         </div>
 
         <div class="following">
            <h2>Following:</h2>
            <% @user.follows_users.each do |followed_user| %>
-          <%= followed_user.username %></br>
+          @<%= followed_user.profile_link %></br>
            <% end %>
         </div>
 
@@ -54,7 +59,7 @@
     </div>
     <div class="log">
       <div class="stream">
-         <%= erb :_twyts %>
+        <%= render_twyts(@twyt_list) %>
       </div>
     </div>
   </div>

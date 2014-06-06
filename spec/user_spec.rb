@@ -34,6 +34,15 @@ describe User do
     expect(@user.follows_users).to include(new_user)
   end
 
+  it 'can favourite a twyt' do
+    new_user = User.make(username: 'other_user', email: "foo@bar.com", password: 'zzz')
+    twyt = new_user.post_twyt("A test twyt")
+
+    @user.favourite(twyt)
+
+    expect(@user.favourites).to include twyt
+  end
+
   describe '#twyts_feed' do
 
     before do
