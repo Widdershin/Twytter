@@ -20,7 +20,7 @@ end
 
 get '/' do
   if is_user?
-    @twyt_list = @user.twyts_following
+    @twyt_list = @user.twyts_feed
     erb :feed
   else
     erb :index

@@ -34,7 +34,7 @@ describe User do
     expect(@user.follows_users).to include(new_user)
   end
 
-  describe '#twyts_following' do
+  describe '#twyts_feed' do
 
     before do
       Twyt.delete_all
@@ -49,12 +49,12 @@ describe User do
     end
 
     it 'gives a list of the twyts of followed users' do
-      expect(@user.twyts_following).to include(@twyt1)
-      expect(@user.twyts_following).to include(@twyt2)
+      expect(@user.twyts_feed).to include(@twyt1)
+      expect(@user.twyts_feed).to include(@twyt2)
     end
 
     it 'sorts the list of twyts of followed users most recent first' do
-      expect(@user.twyts_following).to eq [@twyt2, @twyt1]
+      expect(@user.twyts_feed).to eq [@twyt2, @twyt1]
     end
 
   end

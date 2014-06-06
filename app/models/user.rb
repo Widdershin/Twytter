@@ -42,8 +42,8 @@ class User < ActiveRecord::Base
     twyts.create(message: message)
   end
 
-  def twyts_following
-    follows_users.map(&:twyts).flatten.sort_by(&:created_at).reverse
+  def twyts_feed
+    (self.twyts + followed_user_twyts).flatten.sort_by(&:created_at).reverse
   end
 
   def follow(user)
@@ -58,5 +58,9 @@ class User < ActiveRecord::Base
 
   def self.hash_password(password)
     Digest::MD5.hexdigest password
+  end
+
+  def followed_user_twyts
+    follows_users.map(&:twyts)
   end
 end
