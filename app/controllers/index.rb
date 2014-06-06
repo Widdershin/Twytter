@@ -1,15 +1,15 @@
 set :sessions, true
 
 register do
-  def auth (type)
+  def logged_in (bool)
     condition do
-      redirect "/" unless is_user?
+      redirect "/" unless is_logged_in? == bool
     end
   end
 end
 
 helpers do
-  def is_user?
+  def is_logged_in?
     @user != nil
   end
 end
@@ -19,7 +19,7 @@ before do
 end
 
 get '/' do
-  if is_user?
+  if is_logged_in?
     @twyt_list = @user.twyts_feed
     erb :feed
   else
@@ -27,7 +27,7 @@ get '/' do
   end
 end
 
-get '/profile', :auth => :user do
+get '/profile', :logged_in => true do
   @our_profile = true
   @twyt_list = @user.twyts.reverse
   erb :profile
@@ -36,7 +36,7 @@ end
 get '/profile/:username' do
   # TODO: Don't jack @user for this, would break any layout.erb things that use @user
   username = params[:username]
-  if is_user? && username == @user.username
+  if is_logged_in? && username == @user.username
     redirect to '/profile'
   end
 
