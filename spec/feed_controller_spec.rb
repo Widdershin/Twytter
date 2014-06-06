@@ -18,6 +18,14 @@ describe "Feed controller" do
     expect(page).to have_content 'Feed'
   end
 
+  it 'displays your own twit messages' do
+    @user.post_twyt('My very own message')
+
+    visit '/'
+
+    expect(page).to have_content 'My very own message'
+  end
+
   it 'displays the twit messages of your followers' do
     followed_user = User.create(username: 'TestTarget', email: 'testtarget@example.com')
     @twyt1 = followed_user.post_twyt("test message 1")
