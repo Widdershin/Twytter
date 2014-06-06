@@ -25,14 +25,19 @@ PROFILE STYLES
 .header {
   background-color: #222446;
   height: 70px;
+  padding-left: 30px;
+  padding-top: 5px;
 }
 
 .header h1 {
   background-image: url("logo.png");
-  height: 70px;
-  width: 89px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  height: 60px;
+  width: 74px;
   text-indent: -9999px;
   float: left;
+  padding: 2px;
 }
 
 .header nav {
