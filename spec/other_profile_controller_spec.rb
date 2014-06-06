@@ -31,6 +31,13 @@ describe 'The controller for other users profiles' do
       expect(@user.follows_users).to include(@other_user)
     end
 
+    it 'does not let you follow them twice' do
+      @user.follow(@other_user)
+      visit '/profile/other_test_user'
+      click_button 'Follow'
+
+      expect(page).to have_content('Error: you are already following this user')
+    end
   end
 
 

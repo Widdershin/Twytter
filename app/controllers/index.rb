@@ -67,7 +67,13 @@ end
 
 post '/follow' do
   user_to_follow = User.find_by_id(params[:user])
-  @user.follow(user_to_follow)
+
+  if @user.follows_users.include? user_to_follow
+    flash[:error] = 'Error: you are already following this user'
+  else
+    @user.follow(user_to_follow)
+  end
+
   redirect to previous_url(request)
 end
 
