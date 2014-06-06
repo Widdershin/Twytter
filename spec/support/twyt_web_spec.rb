@@ -28,5 +28,7 @@ describe "Twyts web interaction" do
 
     expect(page).to have_content('Added twyt to favourites!')
     expect(current_path).to eq '/'
+    expect(@user.favourites.last.message).to eq 'Wow such test'
   end
+
 end

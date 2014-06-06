@@ -13,7 +13,10 @@
 
   <%= styled_flash %>
 
-  <%= erb :_twyts %>
+  <%= render_twyts(@twyt_list) %>
+
+  <h2>Favourites</h2>
+  <%= render_twyts(@user.favourites) %>
 
   <h2>Followers:</h2>
   <% @user.is_followed_by.each do |follower| %>
