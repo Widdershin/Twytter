@@ -82,3 +82,11 @@ post '/follow', logged_in: true do
   redirect to previous_url(request)
 end
 
+post '/favourite', logged_in: true do
+  twyt = Twyt.find_by_id(params[:twyt_id])
+
+  flash[:success] = 'Added twyt to favourites!'
+
+  redirect to previous_url(request)
+end
+
