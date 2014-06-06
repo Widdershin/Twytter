@@ -1,5 +1,41 @@
 <div class="container">
-  <h1>Feed</h1>
-  <%= erb :_twyt_bar %>
-  <%= erb :_twyts %>
+
+  <div class="header">
+    <h1>Twytter</h1>
+    <nav>
+      <ul>
+        <li><a href='/profile'>Profile</a></li>
+        <li><a href='/logout'>Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="banner">
+  </div>
+
+  <div class="wrapper">
+    <div class="side-bar">
+      <div class="popeye">
+        <div class="gravatar"></div>
+        <br>
+        <h1><%= @user %>'s feed</h1><br>
+
+        <div class="compose"
+          <h2>Compose new twyt</h2>
+          <% if @our_profile %>
+          <%= erb :_twyt_bar %>
+          <% end %>
+
+          <%= styled_flash %>
+        </div>
+
+       </div>
+    </div>
+    <div class="log">
+      <div class="stream">
+         <%= erb :_twyts %>
+      </div>
+    </div>
+  </div>
+
 </div>
+
