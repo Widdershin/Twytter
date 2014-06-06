@@ -14,7 +14,7 @@
   <div class="wrapper">
     <div class="side-bar">
       <div class="popeye">
-        <div class="gravatar"></div>
+        <div class="gravatar"><%= gravatar_tag @user.email, size: 180 %></div>
         <br>
         <h1><%= @user %>'s profile</h1><br>
 
